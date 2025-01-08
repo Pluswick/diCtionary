@@ -22,7 +22,8 @@ struct word* createNode(char* eng, char* kor);
 int hashFunction(char* eng);
 void addWord(char* eng, char* kor);
 void removeWord(char* eng);
-void search(char* eng);
+void keysearch(char* eng);
+void valsearch(char* kor);
 void display();
 
 #endif //EX_H
