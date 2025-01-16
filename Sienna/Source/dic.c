@@ -69,8 +69,8 @@ void display() {
     for (int i = 0; i < DICTIONARY_SIZE; i++) {
         iterator = hashTable[i].first;
         while (iterator != NULL) {
-            if (day % 30 == 0) {
-            printf("\n========= Dictionary DAY %d =========\n", day/30+1);
+            if ((day > 30 && day % 30)) {
+            printf("\n========= Dictionary DAY %d =========\n", day/30);
             }
             printf("word[%d] : %s | %s\n", i+1, iterator->eng, iterator->kor);
             iterator = iterator->next;
