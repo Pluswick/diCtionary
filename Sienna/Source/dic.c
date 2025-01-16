@@ -64,15 +64,19 @@ void removeWord(char* eng) {
 // 해시테이블 전체 출력 함수
 void display() {
     struct word* iterator;
-    printf("\n========= Dictionary Contents =========\n");
+    int day = 0;
+    printf("\n========= Dictionary DAY 1 =========\n");
     for (int i = 0; i < DICTIONARY_SIZE; i++) {
         iterator = hashTable[i].first;
-        printf("dictionary[%d] : ", i);
         while (iterator != NULL) {
-            printf("(word : %s, mean : %s) -> ", iterator->eng, iterator->kor);
+            if (day % 30 == 0) {
+            printf("\n========= Dictionary DAY %d =========\n", day/30+1);
+            }
+            printf("word[%d] : %s | %s\n", i+1, iterator->eng, iterator->kor);
             iterator = iterator->next;
+            day++;
         }
-        printf("\n");
+        
     }
 }
 
@@ -120,7 +124,7 @@ int main() {
     int ans = 0;
     printf("-----English Dictionary-----\n");
     while (1) {
-        printf("\n1. add\n2. delete\n3. key search\n4. value search\n5. exit\n");
+        printf("\n1. add\n2. delete\n3. key search\n4. value search\n5. dictionary\n6. exit\n");
         scanf("%d", &ans);
         if (ans == 1) {
             printf("영단어를 입력하세요. (ex. apple 사과) : ");
@@ -138,8 +142,9 @@ int main() {
             printf("의미로 검색 : ");
             scanf("%s", v);
             valsearch(v);
+        } else if (ans == 5) {
+            display();
         } else break;
-        display();
     }
 
     // 메모리 정리
